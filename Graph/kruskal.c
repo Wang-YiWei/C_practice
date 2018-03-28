@@ -8,7 +8,6 @@ typedef struct edge
 
 int n;
 int edge_count = 0;
-int front = 0, rear = -1;
 
 void read(int graph[][n]);
 void initialize(int ancestor[]);
@@ -96,7 +95,6 @@ void create_edgelist(int graph[][n], edge edgelist[])
                 edgelist[edge_count].u = i;
                 edgelist[edge_count].v = j;
                 edgelist[edge_count++].weight = graph[i][j];
-                rear++;
             }
 }
 
