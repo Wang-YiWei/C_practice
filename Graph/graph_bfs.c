@@ -15,6 +15,7 @@ int queue[MAX];
 int front = -1, rear = -1;
 
 void create_graph();
+void initialize();
 void BFS(int v);
 void append(int vertex);
 int pop();
@@ -23,17 +24,21 @@ int isEmpty();
 int main()
 {
     create_graph();
+    initialize();
 
-    int v;
-
-    for (v = 0; v < n; ++v)
-        state[v] = initial;
-
+    int i;
     printf("Which vertex do u want to start from for BFS ? \n");
-    scanf("%d", &v);
-    BFS(v);
+    scanf("%d", &i);
+    BFS(i);
 
     return 0;
+}
+
+void initialize(){
+    int i;
+
+    for (i = 0; i < n; ++i)
+        state[i] = initial;
 }
 
 void BFS(int v)
