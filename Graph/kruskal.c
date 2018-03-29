@@ -125,11 +125,10 @@ void print_out(edge spanning_list[])
     printf("\nspanning edges : \n");
     for (i = 0; i < n - 1; ++i)
     {
-        cost += spanning_list[i].weight;
         printf("%d -> %d\n", spanning_list[i].u,spanning_list[i].v);
     }
 
-    printf("\ncost = ");
+    printf("\ncost : \n");
     for (i = 0; i < n - 1; ++i)
     {
         cost += spanning_list[i].weight;
