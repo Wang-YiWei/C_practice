@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 int num;
+
 void initialize(int visited[]);
 void read(int graph[][num]);
 void DFS(int i,int visited[],int graph[][num]);
