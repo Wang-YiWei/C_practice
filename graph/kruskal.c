@@ -10,10 +10,10 @@ int edge_count = 0;
 int spanning_edge_count = 0;
 
 void read(int graph[][n]);
-void initialize(int ancestor[], int subset[]);
+void initialize(int ancestor[]);
 void create_edgelist(int graph[][n], edge edgelist[]);
 void sort_edgelist(int graph[][n], edge edgelist[]);
-void kruskal(int ancestor[], int subset[], edge edgelist[], edge spanning_list[]);
+void kruskal(int ancestor[], edge edgelist[], edge spanning_list[]);
 void union_sets(int ancestor[], edge spanning_list[], edge new_edge);
 void print_out(edge spanning_list[]);
 
@@ -26,15 +26,14 @@ int main()
     int max_edge = n * (n - 1);
     int graph[n][n];
     int ancestor[n];
-    int subset[n];
     edge edgelist[max_edge];
     edge spanning_list[n];
 
     read(graph);
     create_edgelist(graph, edgelist);
     sort_edgelist(graph, edgelist);
-    initialize(ancestor, subset);
-    kruskal(ancestor, subset, edgelist, spanning_list);
+    initialize(ancestor);
+    kruskal(ancestor, edgelist, spanning_list);
     print_out(spanning_list);
 }
 
@@ -48,16 +47,13 @@ void read(int graph[][n])
             scanf("%d", &graph[i][j]);
 }
 
-void initialize(int ancestor[], int subset[])
+void initialize(int ancestor[])
 {
     int i;
 
     // each vertex's ancestor is itself
     for (i = 0; i < n; ++i)
-    {
         ancestor[i] = i;
-        subset[i] = -1;
-    }
 }
 
 void create_edgelist(int graph[][n], edge edgelist[])
@@ -93,7 +89,7 @@ void sort_edgelist(int graph[][n], edge edgelist[])
     }
 }
 
-void kruskal(int ancestor[], int subset[], edge edgelist[], edge spanning_list[])
+void kruskal(int ancestor[], edge edgelist[], edge spanning_list[])
 {
 
     int i;
