@@ -15,6 +15,7 @@ void create_edgelist(int graph[][n], edge edgelist[]);
 void sort_edgelist(int graph[][n], edge edgelist[]);
 void kruskal(int ancestor[], edge edgelist[], edge spanning_list[]);
 void union_sets(int ancestor[], edge spanning_list[], edge new_edge);
+int find_ancestor(int ancestor[], int vertex);
 void print_out(edge spanning_list[]);
 
 int main()
@@ -113,7 +114,15 @@ void union_sets(int ancestor[], edge spanning_list[], edge new_edge)
     int i;
     for (i = 0; i < n; ++i)
         if (ancestor[i] == new_edge.v)
-            ancestor[i] = ancestor[new_edge.u];
+            ancestor[i] = find_ancestor(ancestor, new_edge.u);
+}
+
+int find_ancestor(int ancestor[], int vertex)
+{
+    if (ancestor[vertex] == vertex)
+        return vertex;
+    else
+        find_ancestor(ancestor, ancestor[vertex]);
 }
 
 void print_out(edge spanning_list[])
