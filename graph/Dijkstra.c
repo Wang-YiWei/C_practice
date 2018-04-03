@@ -57,7 +57,9 @@ void read(int graph[][n])
 
 void dijkstra(int v, int graph[][n], int distance[], short found[])
 {
-    int i, u, w;
+    int i;
+    int u; // the closest vertex (not found yet) to start vertex
+    int w; // iterate for every vertex after a vertex is found
 
     // initialize
     for (i = 0; i < n; ++i)
