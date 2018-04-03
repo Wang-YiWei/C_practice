@@ -3,11 +3,6 @@
 #define TRUE 1
 #define FALSE 0
 
-typedef struct edge
-{
-    int u, v, weight;
-} edge;
-
 unsigned short infinity = ~0;
 int n;
 
