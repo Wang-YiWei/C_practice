@@ -22,7 +22,7 @@ int is_edge_in_list(edge list[], int adjacent_min_vertex, int vertex, int spanni
 int is_vertex_in_current_list(edge spanning_list[], int vertex);
 void push(int ancestor[], int current_ancestor[], int parent, int child, int adjacent_min_weight, edge current_list[]);
 int find_ancestor(int ancestor[], int i);
-void compare_each_vertex(edge edgelist[], edge spanning_list[], edge current_list[], int ancestor[], int current_ancestor[]);
+void union_subtrees(edge edgelist[], edge spanning_list[], edge current_list[], int ancestor[], int current_ancestor[]);
 edge extract_min_edge(int vertex, edge edgelist[], edge spanning_list[]);
 void transfer(edge spanning_list[], edge current_list[], int ancestor[], int current_ancestor[]);
 void print_out(edge spanning_list[]);
@@ -100,7 +100,7 @@ void sollin(edge edgelist[], edge spanning_list[], edge current_list[], int ance
     // union subtrees
     while (spanning_edge_count != n - 1)
     {
-        compare_each_vertex(edgelist, spanning_list, current_list, ancestor, current_ancestor);
+        union_subtrees(edgelist, spanning_list, current_list, ancestor, current_ancestor);
         transfer(spanning_list, current_list, ancestor, current_ancestor);
         rounds++;
     }
@@ -161,7 +161,7 @@ edge extract_min_edge(int vertex, edge edgelist[], edge spanning_list[])
     return min_edge;
 }
 
-void compare_each_vertex(edge edgelist[], edge spanning_list[], edge current_list[], int ancestor[], int current_ancestor[])
+void union_subtrees(edge edgelist[], edge spanning_list[], edge current_list[], int ancestor[], int current_ancestor[])
 {
     int i, j;
     int subtree;
