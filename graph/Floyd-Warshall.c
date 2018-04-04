@@ -2,11 +2,10 @@
 
 unsigned short infinity = ~0;
 int n;
-int edge_count = 0;
 
 void read(int graph[][n]);
-void initialize(int src[][n]);
-void floyd_warshall(int graph[][n], int src[][n]);
+void initialize(int src[][n], int graph[][n]);
+void floyd_warshall(int src[][n], int graph[][n]);
 void print_out(int graph[][n]);
 
 int main()
@@ -15,12 +14,11 @@ int main()
     printf("How many vertices in graph : ");
     scanf("%d", &n);
 
-    int max_edge = n * (n - 1);
     int graph[n][n];
     int src[n][n]; // check who updates the distance last
 
     read(graph);
-    initialize(src);
+    initialize(graph, src);
     floyd_warshall(graph, src);
     print_out(graph);
 }
@@ -33,20 +31,19 @@ void read(int graph[][n])
     for (i = 0; i < n; ++i)
         for (j = 0; j < n; ++j)
             scanf("%d", &graph[i][j]);
-
-    for (i = 0; i < n; ++i)
-        for (j = 0; j < n; ++j)
-            if (graph[i][j] == 0 && i != j)
-                graph[i][j] = infinity;
 }
 
-void initialize(int src[][])
+void initialize(int graph[][n], int src[][n])
 {
-    int i;
+    int i, j;
 
     for (i = 0; i < n; ++i)
         for (j = 0; j < n; ++j)
+        {
+            if (graph[i][j] == 0 && i != j)
+                graph[i][j] = infinity;
             src[i][j] = -1;
+        }
 }
 
 void floyd_warshall(int graph[][n], int src[][n])
@@ -55,9 +52,7 @@ void floyd_warshall(int graph[][n], int src[][n])
     int i, j, k;
 
     for (k = 0; k < n; ++k)
-    {
         for (i = 0; i < n; ++i)
-        {
             for (j = 0; j < n; ++j)
             {
                 if (i == j || j == k || i == k)
@@ -68,8 +63,6 @@ void floyd_warshall(int graph[][n], int src[][n])
                     src[i][j] = k;
                 }
             }
-        }
-    }
 }
 
 void print_out(int graph[][n])
