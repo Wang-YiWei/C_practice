@@ -89,6 +89,7 @@ int main(){
         }
     }
 
+    /* Both m1 and m2 can enter here */
     return 0;
 
 }

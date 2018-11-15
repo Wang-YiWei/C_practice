@@ -5,5 +5,5 @@
 int main(){
     printf(ANSI_COLOR_MAGENTA"Hello , this is p2\n"ANSI_COLOR_RESET);
 
-    return 0;
+    return 2;
 }

@@ -7,5 +7,5 @@ int main(int argc, char *argv[]){
     printf(ANSI_COLOR_CYAN"p1's process name = %s\n"ANSI_COLOR_RESET,argv[0]);
     printf(ANSI_COLOR_CYAN"%s\n"ANSI_COLOR_RESET,argv[1]);
     printf(ANSI_COLOR_MAGENTA"Hello , this is p1\n"ANSI_COLOR_RESET);
-    return 0;
+    return 1;
 }
